@@ -13,11 +13,6 @@ public class WaveSpawner : MonoBehaviour
 
     public List<GameObject> EnemyTypes = new List<GameObject>();
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         TimeBetween -= Time.deltaTime;
@@ -25,7 +20,7 @@ public class WaveSpawner : MonoBehaviour
         
         if (TimeBetween <= 0 && currSpawn <= numSpawn)
         {
-            Instantiate(EnemyTypes[type], gameObject.transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(EnemyTypes[type], transform.position, Quaternion.identity, transform);
             currSpawn++;
 
             if (currSpawn == numSpawn)

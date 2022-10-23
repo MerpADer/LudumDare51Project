@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Singleton : MonoBehaviour
 {
+    private static Singleton instance = null;
     
     void Awake()
     {
-        int count = FindObjectsOfType(GetType()).Length;
+        /*int count = FindObjectsOfType(GetType()).Length;
 
         if (count > 1)
         {
@@ -17,11 +18,13 @@ public class Singleton : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
+        }*/
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            return;
         }
-    }
-
-    void Update()
-    {
-        
+        Destroy(gameObject);
     }
 }

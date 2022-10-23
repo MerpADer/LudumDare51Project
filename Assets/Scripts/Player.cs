@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public float horizontalSpeed;
     public float verticalSpeed;
+    private float x, y;
 
     public float ROF;
     private float gunCD;
@@ -34,11 +35,11 @@ public class Player : MonoBehaviour
     string[] upgradeName = {"Rate of Fire", "Bullet Speed", "Player Speed", "Damage"};
     private float upgradeNum = 0;
 
-    public GameObject PPD; // post player death
+    public FX PPD; // post player death
 
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         gunCD = ROF;
         speedMod = 0;
         damageMod = 0;
@@ -56,23 +57,7 @@ public class Player : MonoBehaviour
         }
 
         gunCD -= Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = new Vector2(-horizontalSpeed, rb.velocity.y);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.velocity = new Vector2(horizontalSpeed, rb.velocity.y);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, verticalSpeed);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, -verticalSpeed);
-        }
+        CheckMovement();
 
         if (Input.GetKey(KeyCode.Space) && gunCD <= 0)
         {
@@ -121,6 +106,42 @@ public class Player : MonoBehaviour
             tenSecTimer = 0f;
 
         }
+    }
+
+    private void CheckMovement()
+    {
+        //Start Movement
+        if (Input.GetKey(KeyCode.A))
+        {
+            x = -horizontalSpeed;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            x = horizontalSpeed;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            y = verticalSpeed;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            y = -verticalSpeed;
+        }
+
+        //End Movement
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            x = 0;
+        }
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+        {
+            y = 0;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(x, y);
     }
 
     void upgradeType(bool isMajor)
