@@ -98,3 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upTime: 0.5
+  onTimeFinished:
+    m_PersistentCalls:
+      m_Calls: []

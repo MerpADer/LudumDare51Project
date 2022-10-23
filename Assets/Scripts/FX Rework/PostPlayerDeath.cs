@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PostPlayerDeath : MonoBehaviour
 {
-    
+    /*
     public float timeAlive;
 
     void Start()
@@ -22,5 +22,5 @@ public class PostPlayerDeath : MonoBehaviour
         {
             SceneManager.LoadScene(3);
         }
-    }
+    }*/
 }

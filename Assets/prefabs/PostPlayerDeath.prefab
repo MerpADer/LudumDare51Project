@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5909320900214285864}
   - component: {fileID: 2949748498993339971}
-  - component: {fileID: 6988469965122634617}
+  - component: {fileID: 872278034829541810}
   m_Layer: 0
   m_Name: PostPlayerDeath
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6988469965122634617
+--- !u!114 &872278034829541810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5292869067985294945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b48c1e134f9e8dd449ad6122787b3dc2, type: 3}
+  m_Script: {fileID: 11500000, guid: b40be8bc6f1bed8449ddea58d0f54002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeAlive: 0.5
+  upTime: 0.5
+  onTimeFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5934480952086518412, guid: 2fd7e8ac706ec1744b01868c90753630, type: 3}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
+        m_MethodName: LoadNewScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
